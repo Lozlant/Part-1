@@ -20,6 +20,7 @@ public class Laucher : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log("Trigger from" + collision.gameObject);
         Instantiate(missilePrefab, spawn.position, spawn.rotation);
     }
 }
