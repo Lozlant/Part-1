@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Properties;
 using UnityEngine;
 
 public class Car : MonoBehaviour
@@ -26,6 +27,12 @@ public class Car : MonoBehaviour
         rigidbody.AddTorque(steeringInput * -steeringSpeed * Time.deltaTime);
         Vector2 force = transform.up * forwardInput * forwardSpeed * Time.deltaTime;
         if(rigidbody.velocity.magnitude < maxSpeed)
+        rigidbody.AddForce(force);
+    }
+    public void Boosts()
+    {
+        Debug.Log("Boosts");
+        Vector2 force = transform.up * forwardInput * forwardSpeed * Time.deltaTime*20;
         rigidbody.AddForce(force);
     }
 }
