@@ -6,12 +6,11 @@ using UnityEngine;
 
 public class Chest : MonoBehaviour
 {
-    Rigidbody2D rigidbody;
-    public float dis;
+    public GameObject set;
     // Start is called before the first frame update
     void Start()
     {
-        rigidbody = GetComponent<Rigidbody2D>();
+
     }
 
     // Update is called once per frame
@@ -19,9 +18,22 @@ public class Chest : MonoBehaviour
     {
         
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Vector2 direction = collision.contacts[0].normal;
-        rigidbody.MovePosition(rigidbody.position+direction * dis * Time.deltaTime);
+        
+        if (collision.CompareTag("Goal"))
+        {    
+            set.GetComponent<Restart>().goalsComplete++;
+            Debug.Log("Trigger  " + set.GetComponent<Restart>().goalsComplete);
+
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Goal"))
+        {
+            set.GetComponent<Restart>().goalsComplete--;
+
+        }
     }
 }
