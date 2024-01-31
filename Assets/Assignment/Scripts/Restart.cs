@@ -21,7 +21,7 @@ public class Restart : MonoBehaviour
             GetComponent<SpriteRenderer>().color = Color.green;
         }
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
